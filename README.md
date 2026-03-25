@@ -88,3 +88,5 @@ npm install
 - 要真正开始注入人格 prompt，仍然需要执行 `/meow on`
 
 ---
+## 友情链接
+[LinuxDo](https://linux.do/)
