@@ -1,0 +1,29 @@
+{
+  "name": "opencode-meow-plugin",
+  "version": "0.1.1",
+  "description": "Project-level OpenCode meow persona template with /meow commands and prompt injection.",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    ".opencode/commands",
+    ".opencode/plugins",
+    ".opencode/package.json",
+    ".opencode/meow-state.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "opencode",
+    "plugin",
+    "template",
+    "persona",
+    "prompt",
+    "cli"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}
