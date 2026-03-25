@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises"
 import { join } from "node:path"
 
 export const DEFAULT_MEOW_STATE = Object.freeze({
-  enabled: false,
+  enabled: true,
   ownerTitle: "主人",
   sentenceSuffix: "喵",
   mode: "playful",

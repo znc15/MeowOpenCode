@@ -84,8 +84,9 @@ npm install
 说明：
 
 - `/meow` 与 `/meow toggle` 等价
-- `owner / suffix / mode` 只改配置，**不会自动开启**
-- 要真正开始注入人格 prompt，仍然需要执行 `/meow on`
+- fresh setup 默认已经开启，会直接注入人格 prompt
+- `owner / suffix / mode` 会立即更新当前配置
+- 如果你手动关掉了，再执行 `/meow on` 即可重新开启
 
 ---
 ## 友情链接

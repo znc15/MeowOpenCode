@@ -84,7 +84,7 @@ test("buildMeowPersonaPrompt renders the configured persona instructions", () =>
 })
 
 test("applyMeowAction toggles state and reports enabled result", () => {
-  const result = applyMeowAction(DEFAULT_MEOW_STATE, "toggle")
+  const result = applyMeowAction({ ...DEFAULT_MEOW_STATE, enabled: false }, "toggle")
 
   assert.equal(result.state.enabled, true)
   assert.equal(result.message, "喵模式已开启。")
@@ -198,6 +198,12 @@ test("MeowPersonaPlugin persists owner and mode configuration from raw command i
 test("MeowPersonaPlugin appends persona prompt only when enabled", async () => {
   const root = await mkdtemp(join(tmpdir(), "meow-plugin-prompt-"))
   const plugin = await MeowPersonaPlugin({ directory: root, worktree: root })
+
+  await saveMeowState(root, {
+    ...DEFAULT_MEOW_STATE,
+    enabled: false,
+  })
+
   const disabledOutput = { prompt: "Base prompt" }
 
   await plugin["tui.prompt.append"]({}, disabledOutput)
@@ -215,4 +221,15 @@ test("MeowPersonaPlugin appends persona prompt only when enabled", async () => {
   assert.match(enabledOutput.prompt, /Base prompt/)
   assert.match(enabledOutput.prompt, /## Meow Persona Mode/)
   assert.match(enabledOutput.prompt, /主人/)
+})
+
+test("MeowPersonaPlugin shows persona prompt by default on a fresh setup", async () => {
+  const root = await mkdtemp(join(tmpdir(), "meow-plugin-fresh-"))
+  const plugin = await MeowPersonaPlugin({ directory: root, worktree: root })
+  const output = { prompt: "Base prompt" }
+
+  await plugin["tui.prompt.append"]({}, output)
+
+  assert.match(output.prompt, /Base prompt/)
+  assert.match(output.prompt, /## Meow Persona Mode/)
 })
