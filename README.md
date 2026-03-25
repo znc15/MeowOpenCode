@@ -17,7 +17,33 @@
 
 ## 30 秒上手
 
-把仓库内容放进你的项目根目录，然后安装依赖：
+### 方式一：使用已发布的 npm 插件（推荐）
+
+- `https://www.npmjs.com/package/opencode-meow-plugin`
+
+在你的项目根目录创建 `opencode.json`（或 `.opencode/opencode.json`），加入：
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["opencode-meow-plugin"]
+}
+```
+
+然后启动 OpenCode。OpenCode 会在启动时自动安装并加载这个插件，不需要再手动把仓库拷进项目里。
+
+如果你想固定版本，也可以这样写：
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["opencode-meow-plugin@0.1.1"]
+}
+```
+
+### 方式二：本地仓库方式（开发 / 调试用）
+
+如果你是直接拉这个仓库到本地做开发或调试，再安装根目录依赖：
 
 ```bash
 npm install
